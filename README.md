@@ -84,4 +84,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Demo
 
-Live demo: [https://shopnow-ecommerce-demo.netlify.app](https://shopnow-ecommerce-demo.netlify.app)
+Live demo: [https://anuragggggggggggg.github.io/shopnow-ecommerce/](https://anuragggggggggggg.github.io/shopnow-ecommerce/)

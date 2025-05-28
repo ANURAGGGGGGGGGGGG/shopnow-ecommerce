@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CheckoutForm from '../components/CheckoutForm';
@@ -10,17 +10,19 @@ const CheckoutPage = () => {
     const [orderPlaced, setOrderPlaced] = useState(false);
     const [orderNumber, setOrderNumber] = useState('');
 
-    const shippingCharge = useMemo(() => {
+    // Dynamic shipping calculation
+    const calculateShipping = () => {
         const baseShipping = 5;
         const perItemShipping = 2;
         const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
         return baseShipping + (perItemShipping * totalItems);
-    }, [cart]);
+    };
 
+    const shippingCharge = calculateShipping();
     const taxRate = 0.07;
-    const cartTotal = getCartTotal();
-    const taxAmount = cartTotal * taxRate;
-    const totalAmount = cartTotal + shippingCharge + taxAmount;
+    const taxAmount = getCartTotal() * taxRate;
+    const taxPercentage = Math.round(taxRate * 100); // Rounded percentage
+    const totalAmount = getCartTotal() + shippingCharge + taxAmount;
 
     if (cart.length === 0 && !orderPlaced) {
         return (
@@ -85,14 +87,14 @@ const CheckoutPage = () => {
                         <div className="py-3">
                             <div className="d-flex justify-content-between mb-2">
                                 <span>Subtotal</span>
-                                <span>{formatCurrency(cartTotal)}</span>
+                                <span>{formatCurrency(getCartTotal())}</span>
                             </div>
                             <div className="d-flex justify-content-between mb-2">
                                 <span>Shipping</span>
                                 <span>{formatCurrency(shippingCharge)}</span>
                             </div>
                             <div className="d-flex justify-content-between mb-3">
-                                <span>Tax ({taxRate * 100}%)</span>
+                                <span>Tax ({taxPercentage}%)</span>
                                 <span>{formatCurrency(taxAmount)}</span>
                             </div>
                         </div>

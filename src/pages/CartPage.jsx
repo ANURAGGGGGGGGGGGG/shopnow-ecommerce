@@ -6,6 +6,7 @@ import { formatCurrency } from '../utils/formatCurrency';
 const CartPage = () => {
     const { cart, getCartTotal, clearCart } = useCart();
 
+    // Calculate dynamic shipping
     const baseShipping = 5;
     const perItemShipping = 2;
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -14,6 +15,7 @@ const CartPage = () => {
     const subtotal = getCartTotal();
     const taxRate = 0.07;
     const taxAmount = subtotal * taxRate;
+    const taxPercentage = Math.round(taxRate * 100); // Rounded percentage
     const totalAmount = subtotal + shippingCharge + taxAmount;
 
     if (cart.length === 0) {
@@ -70,7 +72,7 @@ const CartPage = () => {
                                 <span>{formatCurrency(shippingCharge)}</span>
                             </div>
                             <div className="d-flex justify-content-between">
-                                <span>Tax</span>
+                                <span>Tax ({taxPercentage}%)</span>
                                 <span>{formatCurrency(taxAmount)}</span>
                             </div>
                         </div>
