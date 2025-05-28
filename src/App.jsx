@@ -10,7 +10,7 @@ import CheckoutPage from './pages/CheckoutPage';
 function App() {
   return (
     <CartProvider>
-      <Router>
+      <Router basename="/shopnow-ecommerce">
         <div className="d-flex flex-column min-vh-100">
           <Navbar />
           <main className="flex-grow-1">
