@@ -33,7 +33,7 @@ const CheckoutForm = ({ onSubmit }) => {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleChange}
-                        className="form-control"
+                        className="form-control text-dark" // Added text-dark
                         required
                     />
                 </div>
@@ -45,7 +45,7 @@ const CheckoutForm = ({ onSubmit }) => {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleChange}
-                        className="form-control"
+                        className="form-control text-dark" // Added text-dark
                         required
                     />
                 </div>
@@ -59,7 +59,7 @@ const CheckoutForm = ({ onSubmit }) => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="form-control"
+                    className="form-control text-dark" // Added text-dark
                     required
                 />
             </div>
@@ -72,7 +72,7 @@ const CheckoutForm = ({ onSubmit }) => {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="form-control"
+                    className="form-control text-dark" // Added text-dark
                     required
                 />
             </div>
@@ -86,7 +86,7 @@ const CheckoutForm = ({ onSubmit }) => {
                         name="city"
                         value={formData.city}
                         onChange={handleChange}
-                        className="form-control"
+                        className="form-control text-dark" // Added text-dark
                         required
                     />
                 </div>
@@ -98,7 +98,7 @@ const CheckoutForm = ({ onSubmit }) => {
                         name="postalCode"
                         value={formData.postalCode}
                         onChange={handleChange}
-                        className="form-control"
+                        className="form-control text-dark" // Added text-dark
                         required
                     />
                 </div>
@@ -110,7 +110,7 @@ const CheckoutForm = ({ onSubmit }) => {
                         name="country"
                         value={formData.country}
                         onChange={handleChange}
-                        className="form-control"
+                        className="form-control text-dark" // Added text-dark
                         required
                     />
                 </div>
@@ -152,6 +152,19 @@ const CheckoutForm = ({ onSubmit }) => {
             >
                 Complete Order
             </button>
+
+            {/* Add custom styles to fix text visibility */}
+            <style jsx>{`
+                .form-control {
+                    color: #212529 !important;
+                }
+                .form-control:focus {
+                    color: #212529 !important;
+                }
+                .form-check-label {
+                    color: #212529;
+                }
+            `}</style>
         </form>
     );
 };

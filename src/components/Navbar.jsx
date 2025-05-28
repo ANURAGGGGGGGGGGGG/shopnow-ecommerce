@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const [badgeStyles, badgeApi] = useSpring(() => ({
     from: { opacity: 0, transform: 'translateY(-20px)' },
-    config: { duration: 1000 } // Slower animation
+    config: { duration: 1000 }
   }));
 
   const [iconStyles, iconApi] = useSpring(() => ({
@@ -43,15 +43,15 @@ const Navbar = () => {
       badgeApi.start({
         from: { opacity: 1, transform: 'translateY(0px)' },
         to: [
-          { opacity: 1, transform: 'translateY(0px)' }, // Stay visible
-          { opacity: 0, transform: 'translateY(-20px)' } // Then fade out
+          { opacity: 1, transform: 'translateY(0px)' },
+          { opacity: 0, transform: 'translateY(-20px)' }
         ],
         config: { 
-          duration: 1500, // Total animation duration (1.5 seconds)
+          duration: 1500,
           tension: 120,
           friction: 14
         },
-        delay: 300, // Short delay before starting animation
+        delay: 300,
         onRest: () => setChangeAmount(0)
       });
 
